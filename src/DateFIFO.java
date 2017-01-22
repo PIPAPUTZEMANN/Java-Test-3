@@ -87,13 +87,13 @@ public class DateFIFO {
 	}
 	public DateFIFO deepCopy(){
 		
-		DateFIFO output=new DateFIFO(elements.length);
+		DateFIFO copy=new DateFIFO(elements.length);
 		for(int i =0;i<elements.length;i++){
 			if (elements[i] != null){
-			output.push(new Date(elements[i]));
+			copy.push(new Date(elements[i]));
 			}				
 		}
-		return output;
+		return copy;
 		
 		
 	}

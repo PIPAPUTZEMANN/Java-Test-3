@@ -123,6 +123,103 @@ public Date nextDay(){
 	}
 	
 	}
+
+public Day getWeekday(){
+	
+	Day wday=null;
+	
+	
+	int T=this.getDay();
+	int Nt;
+	int Nm=0;
+	int NJz;
+	int NJh;
+	int Nsj=0;
+	int w;
+	
+	
+	// Wochentag bestimmen
+	
+	Nt=T%7;
+	
+	// Montag bestimmen
+	
+	
+	
+	switch(this.getMonth()){
+	
+	case 1 : Nm = 0; break;
+	case 2 : Nm = 3; break;
+	case 3 : Nm = 3; break;
+	case 4 : Nm = 6; break;
+	case 5 : Nm = 1; break;
+	case 6 : Nm = 4; break;
+	case 7 : Nm = 6; break;
+	case 8 : Nm = 2; break;
+	case 9 : Nm = 5; break;
+	case 10: Nm = 0; break;
+	case 11: Nm = 3; break;
+	case 12: Nm = 5; break;
+	
+	
+	}
+	
+	//Jahresziffer die letzten beiden Ziffern
+	
+	int jz = this.getYear()%1000%100;
+	
+	NJz=(jz+(jz/4))%7;
+	
+	// Jahresziffer die ersten beiden Ziffern
+	
+	int jh = (this.getYear()-jz)/100;
+	
+	NJh=(3-(jh%4))*2;
+	
+	
+	if(isValidDate(this.getDay(),this.getMonth(),this.getYear())){
+		
+		if (getMonth() == 1 || getMonth() == 2){
+			Nsj = -1;	
+		
+	}
+	}
+	// Berechnung
+	
+	
+	
+	w=(Nt+Nm+NJh+NJz+Nsj);
+	
+	
+	switch (w) {
+	case 0 : wday = Day.Sunday;		break;
+	case 1 : wday = Day.Monday;		break;
+	case 2 : wday = Day.Tuesday;	break;
+	case 3 : wday = Day.Wednesday;	break;
+	case 4 : wday = Day.Thursday;	break;
+	case 5 : wday = Day.Friday;		break;
+	case 6 : wday = Day.Saturday;	break;
+	}
+	return wday;
+}
+
+public int getYear() {
+	// TODO Auto-generated method stub
+	return year;
+}
+
+public int getDay() {
+	// TODO Auto-generated method stub
+	return day;
+}
+
+public int getMonth() {
+	// TODO Auto-generated method stub
+	return month;
+}
+
+
+
 			
 		
 	
