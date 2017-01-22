@@ -10,6 +10,7 @@ private int day;
 private int month;
 private int year;
 private static int[] lastDayInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+static int getNumberofDateObjects=0;
 
 
 Date(){
@@ -17,6 +18,7 @@ Date(){
 	this.day=01;
 	this.month=01;
 	this.year=1970;
+	getNumberofDateObjects++;
 }
 
 Date(int myday,int mymonth,int myyear){
@@ -44,6 +46,8 @@ Date(Date other){
 	day=other.day;
 	month=other.month;
 	year=other.year;
+	
+	getNumberofDateObjects++;
 	
 	
 }
@@ -188,7 +192,7 @@ public Day getWeekday(){
 	
 	
 	
-	w=(Nt+Nm+NJh+NJz+Nsj);
+	w=(Nt+Nm+NJh+NJz+Nsj)%7;
 	
 	
 	switch (w) {
@@ -218,9 +222,16 @@ public int getMonth() {
 	return month;
 }
 
+public int getNumberofDateObjects(){
+	
+	return getNumberofDateObjects;
+}
 
+public void finalize(){
+	System.out.println("Objekt wird gelöscht");
+	getNumberofDateObjects--;
+}
 
-			
 		
 	
 	
